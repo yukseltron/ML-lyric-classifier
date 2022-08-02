@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = 'http://0.0.0.0:5000/api/'
+url = 'https://lyrics-classifier.vercel.app/api/'
 
 data = [["baby you can drive my car"]]
 j_data = json.dumps(data)
