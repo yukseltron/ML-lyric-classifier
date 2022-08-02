@@ -14,10 +14,8 @@ widget:
 
 ---
 
-# Classification Challenge using CatBoost
+# Lyrics Classifier
 
-## INF2179 Fall 2021
-### Hamid Yuksel
 
 This submission uses [CatBoost](https://catboost.ai/).
 CatBoost was chosen for its listed benefits, mainly in requiring less hyperparameter tuning and preprocessing of categorical and text features. It is also fast and fairly easy to set up.
