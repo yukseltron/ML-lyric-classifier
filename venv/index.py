@@ -22,6 +22,20 @@ def get_calc():
     prediction = np.array2string(model.predict([data['lyric']]))
     return jsonify(prediction)
 
+@app.route('/result/', methods=('GET', 'POST'))
+def result():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        if not title:
+            flash('Title is required!')
+        elif not content:
+            flash('Content is required!')
+        else:
+            messages.append({'title': title, 'content': content})
+            return redirect(url_for('index'))
+    return render_template('result.html')
+
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     """Return JSON instead of HTML for HTTP errors."""
