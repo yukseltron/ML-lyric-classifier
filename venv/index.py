@@ -6,11 +6,7 @@ from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 
-messages = [{'title': 'Message One',
-             'content': 'Message One Content'},
-            {'title': 'Message Two',
-             'content': 'Message Two Content'}
-            ]
+messages = [{'genre': 'Message One',}]
 
 @app.route("/")
 def index():
@@ -19,14 +15,11 @@ def index():
 @app.route('/', methods=('GET', 'POST'))
 def result():
     if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        if not title:
-            flash('Title is required!')
-        elif not content:
-            flash('Content is required!')
+        lyric = request.form['lyric']
+        if not lyric:
+            flash('lyric is required!')
         else:
-            messages.append({'title': title, 'content': content})
+            messages.append({'genre': lyric})
             return redirect(url_for('index'))
     return render_template('index.html', messages=messages)
 
