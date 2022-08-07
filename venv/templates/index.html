@@ -2,11 +2,6 @@
 
 {% block content %}
     <h1>{% block title %} Messages {% endblock %}</h1>
-    {% for message in messages %}
-        <div class='message'>
-            <h3>{{ message['genre'] }}</h3>
-        </div>
-    {% endfor %}
     <form method="post">
         <label for="lyric">Enter Lyric</label>
         <br>
@@ -17,4 +12,11 @@
         <br>
         <button type="submit">Submit</button>
     </form>
+    {% for message in messages|reverse %}
+        {% if loop.index <= 5 %}
+            <div class='message'>
+                <h3>{{ message['genre'] }}</h3>
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

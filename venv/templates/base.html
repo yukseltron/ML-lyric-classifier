@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <title>Lyrics Genre Classifier</title>
     <style>
+        :root {
+            font-family: sans-serif;
+            margin: auto;
+            max-width: 80%;
+        }
         .message {
+            width: 50%;
+            margin: auto;
+            text-align: center;
             padding: 10px;
-            margin: 5px;
             background-color: #f3f3f3
         }
         nav a {
@@ -27,7 +34,7 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">FlaskApp</a>
+        <a href="{{ url_for('index') }}">Home</a>
         <a href="#">About</a>
     </nav>
     <hr>

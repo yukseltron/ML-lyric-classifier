@@ -7,6 +7,8 @@ from werkzeug.exceptions import HTTPException
 app = Flask(__name__)
 
 messages = [{'genre': 'Message One',}]
+modelfile = 'model.pickle'
+model = p.load(open(modelfile, 'rb'))
 
 @app.route("/")
 def index():
@@ -19,7 +21,8 @@ def result():
         if not lyric:
             flash('lyric is required!')
         else:
-            messages.append({'genre': lyric})
+            prediction = np.array2string(model.predict([lyric]))
+            messages.append({'genre': prediction})
             return redirect(url_for('index'))
     return render_template('index.html', messages=messages)
 
