@@ -16,13 +16,7 @@ messages = [{'title': 'Message One',
 def index():
     return render_template('index.html', messages=messages)
 
-@app.route('/api/', methods=['POST'])
-def get_calc():
-    data = request.get_json(force=True)
-    prediction = np.array2string(model.predict([data['lyric']]))
-    return jsonify(prediction)
-
-@app.route('/result/', methods=('GET', 'POST'))
+@app.route('/', methods=('GET', 'POST'))
 def result():
     if request.method == 'POST':
         title = request.form['title']
@@ -34,7 +28,13 @@ def result():
         else:
             messages.append({'title': title, 'content': content})
             return redirect(url_for('index'))
-    return render_template('result.html')
+    return render_template('index.html', messages=messages)
+
+@app.route('/api/', methods=['POST'])
+def get_calc():
+    data = request.get_json(force=True)
+    prediction = np.array2string(model.predict([data['lyric']]))
+    return jsonify(prediction)
 
 @app.errorhandler(HTTPException)
 def handle_exception(e):

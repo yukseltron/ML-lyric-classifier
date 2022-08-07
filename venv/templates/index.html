@@ -8,4 +8,14 @@
             <p>{{ message['content'] }}</p>
         </div>
     {% endfor %}
+    <form method="post">
+        <label for="lyric">Enter Lyric</label>
+        <br>
+        <input type="text" name="lyric"
+               placeholder="Message title"
+               value="{{ request.form['title'] }}">
+        </input>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
 {% endblock %}
