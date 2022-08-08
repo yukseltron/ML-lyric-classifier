@@ -46,7 +46,8 @@ def handle_exception(e):
     response.content_type = "application/json"
     return response
 
-if __name__ == '__main__':
-    modelfile = 'model.pickle'
-    model = p.load(open(modelfile, 'rb'))
-    app.run(debug=True, host='0.0.0.0')
+
+#if __name__ == '__main__':
+#    modelfile = 'model.pickle'
+#    model = p.load(open(modelfile, 'rb'))
+#    app.run(debug=True, host='0.0.0.0')
